@@ -1,0 +1,25 @@
+.transaction {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.table {
+    overflow-y: auto;
+    height: 200px;
+}
+
+.box {
+    display: flex;
+    justify-content: space-around;
+}
+
+.driver-description-box {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 350px;
+}
+.buttons-box{
+    display: flex;
+    align-items: flex-end;
+}

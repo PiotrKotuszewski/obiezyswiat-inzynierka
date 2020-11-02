@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+    <link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" rel="stylesheet"/>
+    <link href="../static/css/register.css" th:href="@{/css/register.css}" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/home">Obiezyswiat</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/home">Home page<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/transaction/acceptTransaction">Apply transaction</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/transaction/allTransactions">Available transaction</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Map Driver</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/vehicle/allVehicles">Vehicle</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/employee/allEmployees">Employee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="register-container">
+    <div class="data-column">
+        <form action="#" th:action="@{/employee/addEmployee}" th:object="${employee}" method="post">
+        <div class="small-text">
+            <p class="lead">Add new Employee</p>
+            <div class="form-group">
+                <label for="addInputFirstName">First name</label>
+                <input type="text" class="form-control" id="addInputFirstName" aria-describedby="firstNameHelp"
+                       placeholder="Enter First name" th:field="*{firstName}">
+            </div>
+            <div class="form-group">
+                <label for="addInputSurname">Surname</label>
+                <input type="text" class="form-control" id="addInputSurname" aria-describedby="surnameHelp"
+                       placeholder="Enter Surname" th:field="*{lastName}">
+            </div>
+            <div class="form-group">
+                <label for="addInputSalary">Salary</label>
+                <input type="text" class="form-control" id="addInputSalary" aria-describedby="surnameHelp"
+                       placeholder="Enter salary" th:field="*{salary}">
+            </div>
+            <div class="form-group">
+                <label for="job">Enter job</label>
+                <select class="form-control" id="job" th:field="*{position}">
+                    <option th:value="Kierowca" th:text="Kierowca"></option>
+                    <option th:value="Sekretarka" th:text="Sekretarka"></option>
+                </select>
+            </div>
+        </div>
+        <div class="button-flex">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
