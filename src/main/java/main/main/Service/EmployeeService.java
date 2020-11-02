@@ -38,6 +38,10 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
+    public List<Employee> showEmployeesWithoutVehicle(){
+        return employeeRepository.employees();
+    }
+
     public List<Employee> showEmployeesByUserId(String userId){
         return employeeRepository.findAllByUserId(userId);
     }

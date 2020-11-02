@@ -23,7 +23,7 @@ public class Employee implements Serializable {
     private float salary;
     @Column(name = "position", nullable = false)
     private String position;
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id")
     private String userId;
 
     @OneToMany(mappedBy = "employee")

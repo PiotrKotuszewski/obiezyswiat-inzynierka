@@ -32,6 +32,7 @@ public class Vehicle implements Serializable {
     @OneToMany(mappedBy = "vehicle")
     private List<Transaction> transactions;
     @OneToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "id_employee")
     private Employee employee;
 
     public Vehicle(){}

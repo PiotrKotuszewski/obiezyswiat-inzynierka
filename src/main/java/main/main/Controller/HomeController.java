@@ -3,9 +3,6 @@ package main.main.Controller;
 import main.main.Service.EmployeeService;
 import main.main.Service.TransactionService;
 import main.main.Service.VehicleService;
-import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Secured("ROLE_USER")
 @Controller
 @RequestMapping("/home")
 public class HomeController {
@@ -32,11 +28,10 @@ public class HomeController {
 
     @GetMapping
     public String home(Model model, HttpServletRequest request){
-        KeycloakAuthenticationToken principal = (KeycloakAuthenticationToken) request.getUserPrincipal();
-        String userId = principal.getAccount().getKeycloakSecurityContext().getIdToken().getSubject();
-        model.addAttribute("employeeList", employeeService.showEmployeesByUserId(userId));
-        model.addAttribute("vehicleList", vehicleService.showOurCompanyVehicles(userId));
-        model.addAttribute("transactionList", transactionService.showAssignedTransactions(userId));
+
+        model.addAttribute("employeeList", employeeService.showAllEmployees());
+        model.addAttribute("vehicleList", vehicleService.showAllVehicles());
+        model.addAttribute("transactionList", transactionService.showAvailableTransactions());
         return "homePage";
     }
 }

@@ -4,9 +4,6 @@ import main.main.Model.Employee;
 import main.main.Model.Transaction;
 import main.main.Service.EmployeeService;
 import main.main.Service.TransactionService;
-import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
-@Secured("ROLE_USER")
 @Controller
 public class TransactionController {
 
@@ -59,9 +55,7 @@ public class TransactionController {
     }
 
     @RequestMapping("/transaction/assign")
-    public String assignTransaction(Transaction transaction, Model model, HttpServletRequest request, Long Id){
-        KeycloakAuthenticationToken principal = (KeycloakAuthenticationToken) request.getUserPrincipal();
-        model.addAttribute("employeeList", employeeService.getEmployeesByUserId(principal.getAccount().getKeycloakSecurityContext().getIdToken().getSubject()));
+    public String assignTransaction(Transaction transaction, Long Id){
         transactionService.assign(transaction, Id);
         return "redirect:/acceptTransaction";
     }
