@@ -1,3 +1,3 @@
 Aplikacja specydyjno-logistyczno przeznaczona dla spedytora.
 
-Zeby zarejestrowac/zalogowac sie do aplikacje trzeba odpalic serwer keycloak w wersji 11.0.2 na porcie 8180 i stworzyc realm obiezyswiat
+Logowanie i rejestracja zostala usunieta z tego brancha, zeby latwiej testowac aplikacje bez potrzeby odpalania serwera keycloak.
